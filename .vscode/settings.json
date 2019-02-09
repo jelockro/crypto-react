@@ -25,7 +25,7 @@
       "suppressWelcomeNotice": true
     },
     "gitlens.keymap": "alternate",
-    "sync.gist": // replace this with your own token,
+    "sync.gist": "",// replace this with your own token,
     "sync.host": "",
     "sync.pathPrefix": "",
     "sync.quietSync": false,
@@ -39,7 +39,7 @@
     "sync.forceDownload": false,
     "gitlens.historyExplorer.enabled": true,
     "workbench.colorTheme": "Cobalt2",
-    "editor.fontFamily": "FiraCode-Retina",
+    "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "explorer.confirmDelete": false
   }
