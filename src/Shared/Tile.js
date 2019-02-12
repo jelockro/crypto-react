@@ -26,8 +26,9 @@ export const DeletableTile =styled(SelectableTile)`
   }
 `
 export const DisabledTile =styled(Tile)`
+  opacity: 0.7;
   &:hover {
     pointer-events: none;
-    opacity: 0.4;
+    
   }
 `
