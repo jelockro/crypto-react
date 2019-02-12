@@ -61,7 +61,6 @@ export class AppProvider extends React.Component {
     }
     let {favorites} = cryptoDashData
     return {favorites}
-    return {}
   }
 
   isInFavorites = key => _.includes(this.state.favorites, key)
