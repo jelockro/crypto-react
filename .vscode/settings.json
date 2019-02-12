@@ -27,7 +27,7 @@
     "javascript.format.enable": false,
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-    "window.zoomLevel": 3,
+    "window.zoomLevel": 1,
     "prettier.eslintIntegration": true,
     "files.autoSave": "off",
     "gitlens.advanced.messages": {
