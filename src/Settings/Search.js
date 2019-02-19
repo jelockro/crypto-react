@@ -26,9 +26,9 @@ const handleFilter = _.debounce((inputValue, coinList, setFilteredCoins) => {
   let allStringsToSearch = coinSymbols.concat(coinNames)
   let fuzzyResults = fuzzy.filter(inputValue, allStringsToSearch, {})
     .map(result => result.string)
-  let filteredCoins = _.pickBy(coinList, (result, symKey) => {
+  let filteredCoins = _.pickBy(coinList, (result, sym) => {
     let coinName = result.CoinName
-    return (_.includes(fuzzyResults, symKey) || _.includes(fuzzyResults, coinName))
+    return (_.includes(fuzzyResults, sym))
   })
   console.log(filteredCoins)
   setFilteredCoins(filteredCoins)
