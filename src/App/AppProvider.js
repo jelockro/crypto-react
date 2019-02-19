@@ -18,12 +18,14 @@ export class AppProvider extends React.Component {
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
       confirmFavorites: this.confirmFavorites,
-      isInFavorites: this.isInFavorites
+      isInFavorites: this.isInFavorites,
+      setFilteredCoins: this.setFilteredCoins
     }
   }
 
   componentDidMount = () => {
     this.fetchCoins()
+    this.fetchPrices()
   }
 
   fetchCoins = async () => {
@@ -31,6 +33,29 @@ export class AppProvider extends React.Component {
     this.setState({coinList})
     console.log(coinList)
 
+  }
+
+  fetchPrices = async () => {
+    if(this.state.firstVisit) return
+    let prices = await this.prices();
+    console.log(prices)
+    this.setState({prices})
+  }
+
+  prices = async () => {
+    let returnData =[]
+    console.log(this.state.favorites)
+    console.log(this.state.favorites.length)
+    for (let i = 0; i < this.state.favorites.length; i++) {
+      try { 
+        console.log(this.state.favorites[i])
+        let priceData = await cc.priceFull(this.state.favorites[i], 'USD')
+        returnData.push(priceData)
+    } catch (e) {
+      console.warn('Fetch Price Error: ', e)
+      }
+    }
+    return returnData
   }
 
   addCoin = key => {
@@ -50,6 +75,8 @@ export class AppProvider extends React.Component {
     this.setState({
       firstVisit: false,
       page: 'dashboard'
+    }, () => {
+      this.fetchPrices();
     })
     localStorage.setItem('cryptoDash', JSON.stringify({favorites: this.state.favorites}))
   }
@@ -67,6 +94,8 @@ export class AppProvider extends React.Component {
 
 
   setPage = page => this.setState({page})
+
+  setFilteredCoins = (filteredCoins) => this.setState({filteredCoins})
 
   render(){
     return(
